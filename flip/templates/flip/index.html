@@ -3,8 +3,27 @@
 {% block content %}
 <div class="container">
   <h1>All flip charts</h1>
-  {% for flip in flip_list %}
-    <p>{{ flip }}</p>
-  {% endfor %}
+  <button class="btn btn-primary" onclick="reload()">Reload</button>
+  <div class="card-columns"></div>
 </div>
+
+<script>
+function reload() {
+  $.ajax({
+    type: 'GET',
+    url: 'ajax/',
+    dataType: 'json',
+    success: function(data) {
+      $('.card-columns').empty()
+      var dataArray = data.objects
+      $.each(dataArray, function(i) {
+        $('.card-columns').append('<div class="card"><div class="card-body"><h5 class="card-title">' + dataArray[i].team_name + '</h5>' + dataArray[i].text + '</div></div>');
+      })
+      // document.getElementById('ajax').innerHTML = data.objects
+    }
+  });
+}
+reload();
+setInterval(reload, 1000);
+</script>
 {% endblock %}

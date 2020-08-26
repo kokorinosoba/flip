@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from .forms import FlipForm
 from .models import Flip
 
-def index(request):
-    return HttpResponse('TopPage')
+
+def ajax(request):
+    flips = list(Flip.objects.values('id', 'team_name', 'text'))
+    return JsonResponse({'objects': flips})
 
 
 class FlipCreateView(CreateView):
