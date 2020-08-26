@@ -1,0 +1,12 @@
+{% extends 'flip/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>フリップを削除</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>{{ flip.team_name }}のフリップを本当に削除してもよろしいですか？</p>
+    <button type="submit" class="btn btn-danger">削除</button>
+  </form>
+</div>
+{% endblock %}

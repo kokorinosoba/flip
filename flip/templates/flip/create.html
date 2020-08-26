@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="container">
-  <h1>Add flip chart</h1>
+  <h1>フリップを追加</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">作成</button>
   </form>
 </div>
 {% endblock %}

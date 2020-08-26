@@ -2,8 +2,7 @@
 
 {% block content %}
 <div class="container">
-  <h1>All flip charts</h1>
-  <button class="btn btn-primary" onclick="reload()">Reload</button>
+  <h1>フリップボード</h1>
   <div class="card-columns"></div>
 </div>
 
@@ -17,13 +16,13 @@ function reload() {
       $('.card-columns').empty()
       var dataArray = data.objects
       $.each(dataArray, function(i) {
-        $('.card-columns').append('<div class="card"><div class="card-body"><h5 class="card-title">' + dataArray[i].team_name + '</h5>' + dataArray[i].text + '</div></div>');
+        $('.card-columns').append('<div class="card"><div class="card-body"><h5 class="card-title"><a href="update/' + dataArray[i].id + '">' + dataArray[i].team_name + '</a></h5>' + dataArray[i].text + '</div></div>');
       })
       // document.getElementById('ajax').innerHTML = data.objects
     }
   });
 }
 reload();
-setInterval(reload, 1000);
+setInterval(reload, 5000);
 </script>
 {% endblock %}
